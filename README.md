@@ -1,4 +1,4 @@
-goland Kata
+golang Kata
 ===========
 
 Learn golang via simple problems.
