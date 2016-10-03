@@ -10,7 +10,6 @@ func All(fns ...func()) (done <-chan bool) {
 	var wg sync.WaitGroup
 
 	wg.Add(len(fns))
-
 	ch := make(chan bool, 1)
 
 	for _, fn := range fns {
@@ -39,8 +38,6 @@ func PrintGreetings() {
 }
 
 func main() {
-
 	done := All(PrintName, PrintGreetings)
-
 	<-done
 }

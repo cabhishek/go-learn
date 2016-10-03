@@ -1,29 +1,24 @@
 package main
 
 import (
-    "fmt"
+	"fmt"
 )
 
 func fib(c chan int, n int) {
+	a, b := 0, 1
+	for i := 0; i < n; i++ {
+		a, b = b, b+a
+		c <- a
+	}
 
-    a, b := 0, 1
-
-    for i:= 0; i < n; i++ {
-        a, b = b, b+a
-
-        c <- a
-    }
-
-    close(c)
+	close(c)
 }
 
-func main(){
+func main() {
+	c := make(chan int)
+	go fib(c, 10)
 
-    c := make(chan int)
-
-    go fib(c, 10)
-
-    for n := range c {
-        fmt.Println(n)
-    }
+	for n := range c {
+		fmt.Println(n)
+	}
 }

@@ -1,39 +1,38 @@
 package main
 
 import (
-    "fmt"
+	"fmt"
 )
 
 type Person struct {
-    name string
+	name string
 }
 
-func (p Person) Name(){
-    fmt.Println(p.name)
+func (p Person) Name() {
+	fmt.Println(p.name)
 }
 
 type Manager struct {
-    company string
+	company string
 }
 
-func (m Manager) Company(){
-    fmt.Println(m.company)
+func (m Manager) Company() {
+	fmt.Println(m.company)
 }
 
 // multiple inheritance
 // anonymous Person and Manager declaration
 type PersonManager struct {
-    Person
-    Manager
+	Person
+	Manager
 }
 
-func main(){
+func main() {
+	p := PersonManager{
+		Person{"Slim Shady"},
+		Manager{"Google"},
+	}
 
-    p := PersonManager{
-            Person {"Slim Shady"},
-            Manager{"Google"},
-        }
-
-    p.Name()
-    p.Company()
+	p.Name()
+	p.Company()
 }
